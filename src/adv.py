@@ -22,8 +22,6 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-print(room['outside'])
-
 # Link rooms together
 # DRAW A MAP USING THIS SCHEMATIC!
 
@@ -36,6 +34,8 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+print(room['outside'].n_to)
+
 #
 # Main
 #
@@ -45,7 +45,6 @@ room['treasure'].s_to = room['narrow']
 # Can currently use the string "outside"
 # But eventually, wanna use the dictionary to actually get the room name
 
-player_one = Player("outside")
 
 # Write a loop that:
 #
