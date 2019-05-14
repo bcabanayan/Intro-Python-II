@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -23,6 +24,7 @@ earlier adventurers. The only exit is to the south."""),
 
 
 # Link rooms together
+# DRAW A MAP USING THIS SCHEMATIC!
 
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
@@ -39,9 +41,15 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+# Can currently use the string "outside"
+# But eventually, wanna use the dictionary to actually get the room name
+
+player_one = Player("outside")
+
 # Write a loop that:
 #
 # * Prints the current room name
+# --> look up room in the dictionary...?
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
