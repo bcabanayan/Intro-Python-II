@@ -43,7 +43,7 @@ room['treasure'].s_to = room['narrow']
 # Can currently use the string "outside"
 # But eventually, wanna use the dictionary to actually get the room name
 
-player1 = Player("Player 1", "outside")
+player1 = Player('Player 1', room['outside'])
 
 # Write a loop that:
 #
@@ -62,18 +62,46 @@ player1 = Player("Player 1", "outside")
 # if there's a room in that direction, then update player's current room to new room
 
 selection = ''
-directionList = ('n', 's', 'e', 'w')
-# test if selection is correct type of input
-while str(selection).lower() != 'q':
-    currentRoomName = room[player1.current_room].name
+# Test for quit input
+while selection != 'q':
+    # Print current room name
+    currentRoomName = player1.current_room.name
     print('LOCATION: ' + currentRoomName)
-    currentRoomDescription = room[player1.current_room].description
+    # Print current room description
+    currentRoomDescription = player1.current_room.description
     print('DESCRIPTION: ' + currentRoomDescription)
+    # Prompt for input
     selection = input("WHICH DIRECTION? TYPE n, s, e, OR w. TYPE q TO QUIT: ")
-    if selection in directionList:
-        print('Thanks for providing a direction.')
-    else:
-        print('Please provide a direction.')
-print('Thanks for playing.')
+    selection = str(selection).lower()
+    # Determine is correct directional input is provided
+    if selection == 'n':
+    # Determine if room exists to the north, and then update current room if it exists
+        if player1.current_room.n_to != 'No room there.':
+            player1.current_room = player1.current_room.n_to
+        else:
+            print ('The room does not exist.')
+    # Determine if room exists to the south, and then update current room if it exists
+    elif selection == 's':
+        if player1.current_room.s_to != 'No room there.':
+            player1.current_room = player1.current_room.s_to
+        else:
+            print ('The room does not exist.')
+    # Determine if room exists to the east, and then update current room if it exists
+    elif selection == 'e':
+        if player1.current_room.e_to != 'No room there.':
+            player1.current_room = player1.current_room.e_to
+        else:
+            print ('The room does not exist.')
+    # Determine if room exists to the west, and then update current room if it exists
+    elif selection == 'w':
+        if player1.current_room.w_to != 'No room there.':
+            player1.current_room = player1.current_room.w_to
+        else:
+            print ('The room does not exist.')
+    # Quit condition
+    elif selection == 'q':
+        print('Thanks for playing.')
+    # Prompt to type correct input
+    else: 
+        print('Please select a direction.')
 
-# print('New location: ' + room[room[player1.current_room].n_to])
