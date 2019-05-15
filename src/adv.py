@@ -34,8 +34,6 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print(room['foyer'].s_to)
-
 #
 # Main
 #
@@ -47,8 +45,6 @@ print(room['foyer'].s_to)
 
 player1 = Player("Player 1", "outside")
 
-print(player1.current_room)
-
 # Write a loop that:
 #
 # * Prints the current room name
@@ -59,3 +55,8 @@ print(player1.current_room)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+currentRoomName = room[player1.current_room].name
+print('Location: ' + currentRoomName)
+currentRoomDescription = room[player1.current_room].description
+print('Description: ' + currentRoomDescription)
