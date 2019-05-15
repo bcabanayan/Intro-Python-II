@@ -34,7 +34,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print(room['outside'].n_to)
+print(room['foyer'].s_to)
 
 #
 # Main
@@ -45,11 +45,13 @@ print(room['outside'].n_to)
 # Can currently use the string "outside"
 # But eventually, wanna use the dictionary to actually get the room name
 
+player1 = Player("Player 1", "outside")
+
+print(player1.current_room)
 
 # Write a loop that:
 #
 # * Prints the current room name
-# --> look up room in the dictionary...?
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
