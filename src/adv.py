@@ -57,22 +57,23 @@ player1 = Player("Player 1", "outside")
 # If the user enters "q", quit the game.
 
 # check if it's the correct type of input
+# check if it';s the quit input
 # if it's the correct type of input, check if there's a room in that direction
 # if there's a room in that direction, then update player's current room to new room
 
-selection = ""
+selection = ''
 directionList = ('n', 's', 'e', 'w')
 # test if selection is correct type of input
-while str(selection).lower() not in directionList:
+while str(selection).lower() != 'q':
     currentRoomName = room[player1.current_room].name
     print('LOCATION: ' + currentRoomName)
     currentRoomDescription = room[player1.current_room].description
     print('DESCRIPTION: ' + currentRoomDescription)
-    selection = input("WHICH DIRECTION? TYPE n, s, e, OR w: ")
-    selection = str(selection).lower()
+    selection = input("WHICH DIRECTION? TYPE n, s, e, OR w. TYPE q TO QUIT: ")
     if selection in directionList:
         print('Thanks for providing a direction.')
     else:
         print('Please provide a direction.')
+print('Thanks for playing.')
 
 # print('New location: ' + room[room[player1.current_room].n_to])
