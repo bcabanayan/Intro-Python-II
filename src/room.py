@@ -3,7 +3,7 @@
 
 class Room:
 
-    def __init__(self, name, description, n_to = "", s_to = "", e_to = "", w_to = ""):
+    def __init__(self, name, description, n_to = "No room there.", s_to = "No room there.", e_to = "No room there.", w_to = "No room there."):
         self.name = name
         self.description = description
         self.n_to = n_to
