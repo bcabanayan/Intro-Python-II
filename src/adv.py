@@ -66,15 +66,17 @@ selection = ''
 while selection != 'q':
     # Print current room name
     currentRoomName = player1.current_room.name
-    print("**********" + "\n" + 'LOCATION: ' + currentRoomName + "\n")
+    print("\n" + "**********" + "\n\n" + 'LOCATION: ' + currentRoomName + "\n")
     # Print current room description
     currentRoomDescription = player1.current_room.description
     print('DESCRIPTION: ' + currentRoomDescription + "\n")
+    # Print inventory, if room contains items
     currentRoomInventory = player1.current_room.inventory
     if len(currentRoomInventory) > 0:
-        print("ITEMS:")
+        print("ITEMS:" + "\n")
         for item in currentRoomInventory:
             print(item)
+        print("\n")
     # Prompt for input
     selection = input("WHICH DIRECTION? TYPE n, s, e, OR w. TYPE q TO QUIT: ")
     selection = str(selection).lower()
