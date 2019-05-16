@@ -4,7 +4,7 @@
 # Here, can pass inventory as an empty list, because the player will start with no items.
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, inventory = []):
         self.name = name
         self.current_room = current_room
-        self.inventory = []
+        self.inventory = inventory

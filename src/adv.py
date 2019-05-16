@@ -43,7 +43,7 @@ room['treasure'].s_to = room['narrow']
 # Can currently use the string "outside"
 # But eventually, wanna use the dictionary to actually get the room name
 
-player1 = Player('Player 1', room['outside'])
+player1 = Player('Player 1', room['outside'], [Item('Bag', 'A patched up sack'), Item('Apple', 'Keeps the doctor away')])
 
 # Write a loop that:
 #
@@ -73,8 +73,15 @@ while selection != 'q':
     # Print inventory, if room contains items
     currentRoomInventory = player1.current_room.inventory
     if len(currentRoomInventory) > 0:
-        print("ITEMS:" + "\n")
+        print("ITEMS IN ROOM:" + "\n")
         for item in currentRoomInventory:
+            print(item)
+        print("\n")
+    # Prints player's inventory, if player has items
+    playerInventory = player1.inventory
+    if len(playerInventory) > 0:
+        print("YOUR ITEMS:" + "\n")
+        for item in playerInventory:
             print(item)
         print("\n")
     # Prompt for input
