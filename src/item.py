@@ -5,5 +5,5 @@ class Item:
 
     def __str__(self):
         output = ""
-        output += self.name + "\n" + self.description + "\n"
+        output += "> " + self.name + ": " + self.description
         return output

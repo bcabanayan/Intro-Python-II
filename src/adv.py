@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -8,19 +9,18 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item('Sword', 'A weapon for a warrior'), Item('Wand', 'A weapon for a mage')]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+the distance, but there is no way across the chasm.""", [Item("Shield", "It's flimsy, but it'll do")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
 to north. The smell of gold permeates the air."""),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
-}
+earlier adventurers. The only exit is to the south.""", [Item("Fool's gold nugget", "A useless stone...maybe!")])}
 
 # Link rooms together
 # DRAW A MAP USING THIS SCHEMATIC!
@@ -66,10 +66,15 @@ selection = ''
 while selection != 'q':
     # Print current room name
     currentRoomName = player1.current_room.name
-    print('LOCATION: ' + currentRoomName)
+    print("**********" + "\n" + 'LOCATION: ' + currentRoomName + "\n")
     # Print current room description
     currentRoomDescription = player1.current_room.description
-    print('DESCRIPTION: ' + currentRoomDescription)
+    print('DESCRIPTION: ' + currentRoomDescription + "\n")
+    currentRoomInventory = player1.current_room.inventory
+    if len(currentRoomInventory) > 0:
+        print("ITEMS:")
+        for item in currentRoomInventory:
+            print(item)
     # Prompt for input
     selection = input("WHICH DIRECTION? TYPE n, s, e, OR w. TYPE q TO QUIT: ")
     selection = str(selection).lower()
