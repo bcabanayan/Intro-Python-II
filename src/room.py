@@ -3,9 +3,10 @@
 
 class Room:
 
-    def __init__(self, name, description, n_to = "No room there.", s_to = "No room there.", e_to = "No room there.", w_to = "No room there."):
+    def __init__(self, name, description, inventory = [], n_to = "No room there.", s_to = "No room there.", e_to = "No room there.", w_to = "No room there."):
         self.name = name
         self.description = description
+        self.inventory = inventory
         self.n_to = n_to
         self.s_to = s_to
         self.e_to = e_to
