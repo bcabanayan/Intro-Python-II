@@ -85,33 +85,33 @@ while selection != 'q':
             print(item)
         print("\n")
     # Prompt for input
-    selection = input("WHICH DIRECTION? TYPE n, s, e, OR w. TYPE q TO QUIT: ")
-    selection = str(selection).lower()
+    selection = input("WHICH DIRECTION? TYPE n, s, e, OR w TO MOVE. TYPE q TO QUIT: ")
+    selection = str(selection).lower().strip()
     # Determine is correct directional input is provided
     if selection == 'n':
     # Determine if room exists to the north, and then update current room if it exists
         if player1.current_room.n_to != 'No room there.':
             player1.current_room = player1.current_room.n_to
         else:
-            print ('The room does not exist.')
+            print ('NO ROOM TO THE NORTH!')
     # Determine if room exists to the south, and then update current room if it exists
     elif selection == 's':
         if player1.current_room.s_to != 'No room there.':
             player1.current_room = player1.current_room.s_to
         else:
-            print ('The room does not exist.')
+            print ('NO ROOM TO THE SOUTH!')
     # Determine if room exists to the east, and then update current room if it exists
     elif selection == 'e':
         if player1.current_room.e_to != 'No room there.':
             player1.current_room = player1.current_room.e_to
         else:
-            print ('The room does not exist.')
+            print ('NO ROOM TO THE EAST!')
     # Determine if room exists to the west, and then update current room if it exists
     elif selection == 'w':
         if player1.current_room.w_to != 'No room there.':
             player1.current_room = player1.current_room.w_to
         else:
-            print ('The room does not exist.')
+            print ('NO ROOM TO THE WEST!')
     # Quit condition
     elif selection == 'q':
         print('Thanks for playing.')
