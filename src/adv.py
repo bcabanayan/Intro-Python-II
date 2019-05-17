@@ -61,6 +61,8 @@ player1 = Player('Player 1', room['outside'], [Item('Bag', 'A patched up sack'),
 # if it's the correct type of input, check if there's a room in that direction
 # if there's a room in that direction, then update player's current room to new room
 
+
+
 selection = ''
 # Test for quit input
 while selection != 'q':
@@ -86,7 +88,7 @@ while selection != 'q':
         print("\n")
     # Prompt for input
     selection = input("WHICH DIRECTION? TYPE n, s, e, OR w TO MOVE. TYPE q TO QUIT: ")
-    selection = str(selection).lower().strip()
+    selection = selection.lower().strip()
     # Determine is correct directional input is provided
     if selection == 'n':
     # Determine if room exists to the north, and then update current room if it exists
@@ -115,6 +117,19 @@ while selection != 'q':
     # Quit condition
     elif selection == 'q':
         print('Thanks for playing.')
+    elif len(selection) > 1:
+        selection = selection.split(' ')
+        # Check if command is to get or take an item
+        if selection[0] == 'get' or selection[0] == 'take':
+            selection.pop(0)
+            itemCheck = ' '.join(selection)
+            itemNames = []
+            for item in player1.current_room.inventory:
+                itemNames.append(item.name.lower())
+            if itemCheck in itemNames:
+                print("Item is here!")
+            else:
+                print("No such item in here!")
     # Prompt to type correct input
     else: 
         print('Please select a direction.')
