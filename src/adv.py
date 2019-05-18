@@ -61,8 +61,6 @@ player1 = Player('Player 1', room['outside'], [Item('Bag', 'A patched up sack'),
 # if it's the correct type of input, check if there's a room in that direction
 # if there's a room in that direction, then update player's current room to new room
 
-
-
 selection = ''
 # Test for quit input
 while selection != 'q':
@@ -127,10 +125,10 @@ while selection != 'q':
             for item in player1.current_room.inventory:
                 itemNames.append(item.name.lower())
             if itemCheck in itemNames:
-                print("Item is here!")
+                itemIndex = itemNames.index(itemCheck)
+                player1.current_room.inventory[itemIndex].on_take()
             else:
                 print("No such item in here!")
     # Prompt to type correct input
     else: 
         print('Please select a direction.')
-

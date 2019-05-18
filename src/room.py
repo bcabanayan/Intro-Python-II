@@ -16,3 +16,8 @@ class Room:
         output = ""
         output += self.name + "\n" + self.description + "\n"
         return output
+
+    # def take_item(item):
+        # loop through inventory
+        # return item if found and able to be taken
+        # return none if not in this room

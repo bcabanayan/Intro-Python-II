@@ -7,3 +7,6 @@ class Item:
         output = ""
         output += "> " + self.name + ": " + self.description
         return output
+
+    def on_take(self):
+        return print(F'You have picked up {self.name}!')
