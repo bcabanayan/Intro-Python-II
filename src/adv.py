@@ -6,7 +6,7 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons", []),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east.""", [Item('Sword', 'A weapon for a warrior'), Item('Wand', 'A weapon for a mage')]),
@@ -16,7 +16,7 @@ into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm.""", [Item("Shield", "It's flimsy, but it'll do")]),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", []),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
@@ -92,24 +92,28 @@ while selection != 'q':
     # Determine if room exists to the north, and then update current room if it exists
         if player1.current_room.n_to != 'No room there.':
             player1.current_room = player1.current_room.n_to
+            print(player1.current_room)
         else:
             print ('NO ROOM TO THE NORTH!')
     # Determine if room exists to the south, and then update current room if it exists
     elif selection == 's':
         if player1.current_room.s_to != 'No room there.':
             player1.current_room = player1.current_room.s_to
+            print(player1.current_room)
         else:
             print ('NO ROOM TO THE SOUTH!')
     # Determine if room exists to the east, and then update current room if it exists
     elif selection == 'e':
         if player1.current_room.e_to != 'No room there.':
             player1.current_room = player1.current_room.e_to
+            print(player1.current_room)
         else:
             print ('NO ROOM TO THE EAST!')
     # Determine if room exists to the west, and then update current room if it exists
     elif selection == 'w':
         if player1.current_room.w_to != 'No room there.':
             player1.current_room = player1.current_room.w_to
+            print(player1.current_room)
         else:
             print ('NO ROOM TO THE WEST!')
     # Quit condition
@@ -117,7 +121,7 @@ while selection != 'q':
         print('Thanks for playing.')
     elif len(selection) > 1:
         selection = selection.split(' ')
-        # Check if command is to get or take an item
+        # Check if command is to gpythoet or take an item
         if selection[0] == 'get' or selection[0] == 'take':
             selection.pop(0)
             itemCheck = ' '.join(selection)
@@ -133,6 +137,19 @@ while selection != 'q':
                 del player1.current_room.inventory[itemIndex]
             else:
                 print("No such item in here!")
+        if selection[0] == 'drop':
+            selection.pop(0)
+            itemCheck = ' '.join(selection)
+            playerItemNames = []
+            # Create list of all items in player inventory by name
+            for item in player1.inventory:
+                playerItemNames.append(item.name.lower())
+            # Check if item input is in list of player items; if so, add to the room inventory and remove from player inventory
+            if itemCheck in playerItemNames:
+                itemIndex = playerItemNames.index(itemCheck)
+                player1.inventory[itemIndex].on_drop()
+                player1.current_room.inventory.append(player1.inventory[itemIndex])
+                del player1.inventory[itemIndex]
     # Prompt to type correct input
     else: 
         print('Please select a direction.')

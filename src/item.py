@@ -10,3 +10,6 @@ class Item:
 
     def on_take(self):
         return print(F'You have picked up {self.name}!')
+
+    def on_drop(self):
+        return print(F'You have dropped {self.name}!')
