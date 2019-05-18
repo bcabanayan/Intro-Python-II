@@ -121,12 +121,16 @@ while selection != 'q':
         if selection[0] == 'get' or selection[0] == 'take':
             selection.pop(0)
             itemCheck = ' '.join(selection)
-            itemNames = []
+            roomItemNames = []
+            # Create list of all items in room by name
             for item in player1.current_room.inventory:
-                itemNames.append(item.name.lower())
-            if itemCheck in itemNames:
-                itemIndex = itemNames.index(itemCheck)
+                roomItemNames.append(item.name.lower())
+            # Check if item input is in list of room items; if so, add to the player inventory and remove from room inventory
+            if itemCheck in roomItemNames:
+                itemIndex = roomItemNames.index(itemCheck)
                 player1.current_room.inventory[itemIndex].on_take()
+                player1.inventory.append(player1.current_room.inventory[itemIndex])
+                del player1.current_room.inventory[itemIndex]
             else:
                 print("No such item in here!")
     # Prompt to type correct input
